@@ -16,7 +16,11 @@ namespace AquaCalculation.ViewModels
 {
     class MainWindowModel : ViewModel
     {
-        /* ------------------------------------------------------------------------- */
+        #region Lab1
+        /* ----------------------------------Lab1Model--------------------------------------- */
+        #region Lab1 Lagrange Model
+
+        #region Model
         #region SelectedValue : ValueModel - Какое значение выбранно из ListBox. Lab1
 
         private ValueModel _SelectedValue;
@@ -48,10 +52,15 @@ namespace AquaCalculation.ViewModels
         public double X { get => _X; set => Set(ref _X, value); }
 
         #endregion
-        /* ------------------------------------------------------------------------- */
+        #endregion
+
+        #endregion
+        /* -----------------------------------Lab1Command-------------------------------------- */
+
+        #region Lab1 Lagrange Command
         #region Command
 
-        #region 
+        #region LagrangeRun : Запускает исчисления Лагранжа
 
         public ICommand LagrangeRun { get; }
 
@@ -71,8 +80,6 @@ namespace AquaCalculation.ViewModels
 
             //var answer = LagrangePolynom.SchemeAitken(valueX, valueY, 10, _X);
 
-            X = 4.39;
-
             var answer2 = LagrangePolynom.InterpolationPolynom(valueX, valueY, X, valueX.Count);
 
             List<ValueModel> myModel = new List<ValueModel> { };
@@ -84,6 +91,45 @@ namespace AquaCalculation.ViewModels
         }
         #endregion
 
+        #region Eitkin : Запускает исчисления Ейткіна
+
+        public ICommand EitkinRun { get; }
+
+        private bool CanEitkinRunExecute(object p)
+        {
+            return true;
+        }
+        private void OnEitkinRunExecuted(object p)
+        {
+            List<double> valueX = new List<double> { };
+            List<double> valueY = new List<double> { };
+            foreach (var el in DataXY)
+            {
+                valueX.Add(el.XValue);
+                valueY.Add(el.YValue);
+            }
+
+            var answer = LagrangePolynom.SchemeAitken(valueX, valueY, valueX.Count - 1, X);
+
+            List<ValueModel> temp1 = new List<ValueModel> { };
+            foreach(var el in answer)
+            {
+                List<MainValueClass> temp2 = new List<MainValueClass> { };
+
+                foreach (var el2 in el)
+                    temp2.Add(new MainValueClass { MainValue = el2});
+
+                temp1.Add(new ValueModel { ExternalValue = temp2, ValueName = $"L + {temp1.Count}"});
+            }
+
+            DataValue = temp1;
+        }
+        #endregion
+
+        #endregion
+
+        #endregion
+
         #endregion
 
         /* ------------------------------------------------------------------------- */
@@ -93,6 +139,8 @@ namespace AquaCalculation.ViewModels
             DataXY = new ObservableCollection<DataPoint> { };
 
             LagrangeRun = new LambdaCommand(OnLagrangeRunExecuted, CanLagrangeRunExecute);
+
+            EitkinRun = new LambdaCommand(OnEitkinRunExecuted, CanEitkinRunExecute);
         }
     }
 }
