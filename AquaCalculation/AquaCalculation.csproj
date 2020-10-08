@@ -63,6 +63,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\Lab1\EitkinView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Lab1\LagrangeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -81,7 +89,15 @@
     <Compile Include="Models\MainValueClass.cs" />
     <Compile Include="Models\ValueModel.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
+    <Compile Include="ViewModels\Lab1\EitkinViewModel.cs" />
+    <Compile Include="ViewModels\Lab1\LagrangeViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
+    <Compile Include="Views\Lab1\EitkinView.xaml.cs">
+      <DependentUpon>EitkinView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Lab1\LagrangeView.xaml.cs">
+      <DependentUpon>LagrangeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -7,6 +7,8 @@
         xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:l="clr-namespace:AquaCalculation.Models.Lab1"
         xmlns:vm="clr-namespace:AquaCalculation.ViewModels"
+        xmlns:viewlab1="clr-namespace:AquaCalculation.Views.Lab1"
+        xmlns:viewmodellab1="clr-namespace:AquaCalculation.ViewModels.Lab1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
@@ -24,143 +26,10 @@
             <TabItem Header="Лаб 1">
                 <TabControl>
                     <TabItem Header="Лагранж">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="148*"></RowDefinition>
-                                <RowDefinition Height="197*"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"></ColumnDefinition>
-                                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
-                                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid Grid.Row="0" Grid.Column="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <DataGrid x:Name="_DataXYGridLagrange" Grid.Row="0" Grid.Column="0" MaxColumnWidth="200" AutoGenerateColumns="False" ItemsSource="{Binding DataXY}" FontSize="16" FontWeight="Bold">
-                                        <DataGrid.Columns>
-                                            <DataGridTextColumn IsReadOnly="False" Header="X" Binding="{Binding XValue}" Width="*"/>
-                                            <DataGridTextColumn IsReadOnly="False" Header="Y" Binding="{Binding YValue}" Width="*"/>
-                                        </DataGrid.Columns>
-                                    </DataGrid>
-                                    <Grid Grid.Row="0" Grid.Column="1">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="1*"></RowDefinition>
-                                            <RowDefinition Height="1*"></RowDefinition>
-                                            <RowDefinition Height="1*"></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <Button x:Name="_ButtonClickStartProccesingLagrange" Grid.Row="0" Grid.Column="0" Content="Почати розрахунок" Command="{Binding LagrangeRun}"></Button>
-                                        <Button x:Name="_TextBoxLagrange1" Grid.Row="1" Grid.Column="0" Content="X"/>
-                                        <TextBox x:Name="_TextBoxLagrange2" Grid.Row="2" Grid.Column="0" Text="{Binding X}"/>
-                                    </Grid>
-                                </Grid>
-
-                                <Grid Grid.Row="0" Grid.Column="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <GroupBox Grid.Row="0" Grid.Column="0" Header="Значения">
-                                        <ListBox ItemsSource="{Binding DataValue}" 
-                                             DisplayMemberPath="ValueName"
-                                             SelectedItem="{Binding SelectedValue}"/>
-                                    </GroupBox>
-                                </Grid>
-                                <Grid Grid.Row="0" Grid.Column="2">
-                                    <GroupBox Grid.Row="0" Grid.Column="1" Header="{Binding SelectedValue.ValueName, StringFormat='Значение {0}'}">
-                                        <DataGrid x:Name="_ValueGridLagrange" ItemsSource="{Binding SelectedValue.ExternalValue}">
-                                            <DataGrid.Columns>
-                                            </DataGrid.Columns>
-                                        </DataGrid>
-                                    </GroupBox>
-                                </Grid>
-                            </Grid>
-                            <oxy:Plot Grid.Row="1" Grid.Column="0">
-                                <oxy:Plot.Axes>
-                                    <oxy:LinearAxis Position="Left"/>
-                                    <oxy:LinearAxis Position="Bottom"/>
-                                </oxy:Plot.Axes>
-                                <oxy:LineSeries Color="Blue"
-                                                ItemsSource="{Binding DataXY}"
-                                                DataFieldX="XValue"
-                                                DataFieldY="YValue"/>
-                            </oxy:Plot>
-                        </Grid>
+                        <viewlab1:LagrangeView DataContext="{Binding LagrangeModel}"/>
                     </TabItem>
                     <TabItem Header="Ейктін">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="148*"></RowDefinition>
-                                <RowDefinition Height="197*"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"></ColumnDefinition>
-                                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
-                                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid Grid.Row="0" Grid.Column="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <DataGrid x:Name="_DataXYGridEitkin" Grid.Row="0" Grid.Column="0" MaxColumnWidth="200" AutoGenerateColumns="False" ItemsSource="{Binding DataXY}" FontSize="16" FontWeight="Bold">
-                                        <DataGrid.Columns>
-                                            <DataGridTextColumn IsReadOnly="False" Header="X" Binding="{Binding XValue}" Width="*"/>
-                                            <DataGridTextColumn IsReadOnly="False" Header="Y" Binding="{Binding YValue}" Width="*"/>
-                                        </DataGrid.Columns>
-                                    </DataGrid>
-                                    <Grid Grid.Row="0" Grid.Column="1">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="1*"></RowDefinition>
-                                            <RowDefinition Height="1*"></RowDefinition>
-                                            <RowDefinition Height="1*"></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <Button x:Name="_ButtonClickStartProccesingEitkin" Grid.Row="0" Grid.Column="0" Content="Почати розрахунок" Command="{Binding EitkinRun}"></Button>
-                                        <Button x:Name="_TextBoxEitkin1" Grid.Row="1" Grid.Column="0" Content="X"/>
-                                        <TextBox x:Name="_TextBoxEitkin2" Grid.Row="2" Grid.Column="0" Text="{Binding X}"/>
-                                    </Grid>
-                                </Grid>
-
-                                <Grid Grid.Row="0" Grid.Column="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <GroupBox Grid.Row="0" Grid.Column="0" Header="Значения">
-                                        <ListBox ItemsSource="{Binding DataValue}" 
-                                             DisplayMemberPath="ValueName"
-                                             SelectedItem="{Binding SelectedValue}"/>
-                                    </GroupBox>
-                                </Grid>
-                                <Grid Grid.Row="0" Grid.Column="2">
-                                    <GroupBox Grid.Row="0" Grid.Column="1" Header="{Binding SelectedValue.ValueName, StringFormat='Значение {0}'}">
-                                        <DataGrid x:Name="_ValueGridEitkin" ItemsSource="{Binding SelectedValue.ExternalValue}">
-                                            <DataGrid.Columns>
-  
-                                            </DataGrid.Columns>
-                                        </DataGrid>
-                                    </GroupBox>
-                                </Grid>
-                            </Grid>
-                            <oxy:Plot Grid.Row="1" Grid.Column="0">
-                                <oxy:Plot.Axes>
-                                    <oxy:LinearAxis Position="Left"/>
-                                    <oxy:LinearAxis Position="Bottom"/>
-                                </oxy:Plot.Axes>
-                                <oxy:LineSeries Color="Blue"
-                                                ItemsSource="{Binding DataXY}"
-                                                DataFieldX="XValue"
-                                                DataFieldY="YValue"/>
-                            </oxy:Plot>
-                        </Grid>
+                        <viewlab1:EitkinView DataContext="{Binding EitkenModel}"/>
                     </TabItem>
                 </TabControl>
             </TabItem>
