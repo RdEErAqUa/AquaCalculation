@@ -4,9 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AquaCalculation"
+        xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+            </MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            
+        </StatusBar>
+        <TabControl>
+            <TabItem Header="Лаб 1"></TabItem>
+            <TabItem Header="Лаб 2"></TabItem>
+            <TabItem Header="Лаб 3"></TabItem>
+            <TabItem Header="Лаб 4"></TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>

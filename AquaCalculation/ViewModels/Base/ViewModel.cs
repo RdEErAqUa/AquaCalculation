@@ -1,10 +1,12 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace AquaCalculation.ViewModels.Base
 {
-    internal abstract class ViewModel : INotifyPropertyChanged
+    internal abstract class ViewModel : INotifyPropertyChanged, IDisposable
     {
+        #region Шаблон события изменение елемента
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)
@@ -20,5 +22,26 @@ namespace AquaCalculation.ViewModels.Base
             return true;
 
         }
+        #endregion
+
+        #region Деструктор
+        //~ViewModel()
+        //{
+        //    Dispose(false);
+        //}
+
+        public void Dispose()
+        {
+        }
+
+        private bool _Disposed;
+
+        protected virtual void Dispose(bool Disposing)
+        {
+            if (!Disposing || _Disposed) return;
+            _Disposed = true;
+            //Освобождение памяти 
+        }
+        #endregion
     }
 }
