@@ -34,32 +34,54 @@
                             </Grid.ColumnDefinitions>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <DataGrid x:Name="_DataXYGrid" Grid.Row="0" Grid.Column="0" MaxColumnWidth="200" AutoGenerateColumns="False" ItemsSource="{Binding DataXY}" FontSize="16" FontWeight="Bold">
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn IsReadOnly="False" Header="X" Binding="{Binding XValue}" Width="*"/>
-                                        <DataGridTextColumn IsReadOnly="False" Header="Y" Binding="{Binding YValue}" Width="*"/>
-                                    </DataGrid.Columns>
-                                </DataGrid>
+                                <Grid Grid.Row="0" Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <DataGrid x:Name="_DataXYGrid" Grid.Row="0" Grid.Column="0" MaxColumnWidth="200" AutoGenerateColumns="False" ItemsSource="{Binding DataXY}" FontSize="16" FontWeight="Bold">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn IsReadOnly="False" Header="X" Binding="{Binding XValue}" Width="*"/>
+                                            <DataGridTextColumn IsReadOnly="False" Header="Y" Binding="{Binding YValue}" Width="*"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <Button x:Name="_ButtonClickStartProccesing" Grid.Row="0" Grid.Column="1" Content="Почати розрахунок" Command="{Binding LagrangeRun}"></Button>
+                                </Grid>
 
                                 <Grid Grid.Row="0" Grid.Column="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <GroupBox Grid.Row="0" Grid.Column="0" Header="Значения">
                                         <ListBox ItemsSource="{Binding DataValue}" 
                                              DisplayMemberPath="ValueName"
                                              SelectedItem="{Binding SelectedValue}"/>
                                     </GroupBox>
+                                </Grid>
+                                <Grid Grid.Row="0" Grid.Column="2">
                                     <GroupBox Grid.Row="0" Grid.Column="1" Header="{Binding SelectedValue.ValueName, StringFormat='Значение {0}'}">
-
+                                        <DataGrid x:Name="_ValueGrid" AutoGenerateColumns="False" ItemsSource="{Binding SelectedValue.ExternalValue}">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn IsReadOnly="False" Header="" Binding="{Binding MainValue}" Width="*"/>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
                                     </GroupBox>
                                 </Grid>
                             </Grid>
-                            
+                            <oxy:Plot x:Name="Plot1" Grid.Row="1" Grid.Column="0">
+                                <oxy:Plot.Axes>
+                                    <oxy:LinearAxis Position="Left"/>
+                                    <oxy:LinearAxis Position="Bottom"/>
+                                </oxy:Plot.Axes>
+                                <oxy:LineSeries Color="Blue"
+                                                ItemsSource="{Binding DataXY}"
+                                                DataFieldX="XValue"
+                                                DataFieldY="YValue"/>
+                            </oxy:Plot>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Ейктін">

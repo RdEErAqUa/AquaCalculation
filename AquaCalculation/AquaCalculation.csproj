@@ -71,9 +71,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Data\MathLabs\Determinant.cs" />
+    <Compile Include="Data\MathLabs\LagrangePolynom.cs" />
+    <Compile Include="Infrastructure\Commands\Base\Command.cs" />
+    <Compile Include="Infrastructure\Commands\LambdaCommand.cs" />
     <Compile Include="Models\Lab1\DataPoint.cs" />
     <Compile Include="Models\Lab1\EitkenModel.cs" />
     <Compile Include="Models\Lab1\LagrangeModel.cs" />
+    <Compile Include="Models\MainValueClass.cs" />
     <Compile Include="Models\ValueModel.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
@@ -110,8 +115,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Infrastructure\" />
     <Folder Include="Servises\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

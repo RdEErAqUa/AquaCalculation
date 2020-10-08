@@ -1,11 +1,15 @@
-﻿using AquaCalculation.Models;
+﻿using AquaCalculation.Data.MathLabs;
+using AquaCalculation.Infrastructure.Commands;
+using AquaCalculation.Models;
 using AquaCalculation.Models.Lab1;
 using AquaCalculation.ViewModels.Base;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Xaml.Schema;
 
 namespace AquaCalculation.ViewModels
@@ -13,7 +17,7 @@ namespace AquaCalculation.ViewModels
     class MainWindowModel : ViewModel
     {
         /* ------------------------------------------------------------------------- */
-        #region SelectedValue : ValueModel - Набор выбранного значения
+        #region SelectedValue : ValueModel - Какое значение выбранно из ListBox. Lab1
 
         private ValueModel _SelectedValue;
 
@@ -23,9 +27,9 @@ namespace AquaCalculation.ViewModels
 
         #region DataXY : IEnumerable<DataPoint> - Набор данних заданих в таблице
 
-        private IEnumerable<DataPoint> _DataXY;
+        private ObservableCollection<DataPoint> _DataXY;
 
-        public IEnumerable<DataPoint> DataXY { get => _DataXY; set => Set(ref _DataXY, value); }
+        public ObservableCollection<DataPoint> DataXY { get => _DataXY; set => Set(ref _DataXY, value); }
 
         #endregion
 
@@ -45,17 +49,50 @@ namespace AquaCalculation.ViewModels
 
         #endregion
         /* ------------------------------------------------------------------------- */
+        #region Command
+
+        #region 
+
+        public ICommand LagrangeRun { get; }
+
+        private bool CanLagrangeRunExecute(object p) 
+        {
+            return true;
+        }
+        private void OnLagrangeRunExecuted(object p)
+        {
+            List<double> valueX = new List<double> { };
+            List<double> valueY = new List<double> { };
+            foreach (var el in DataXY)
+            {
+                valueX.Add(el.XValue);
+                valueY.Add(el.YValue);
+            }
+
+            //var answer = LagrangePolynom.SchemeAitken(valueX, valueY, 10, _X);
+
+            X = 4.39;
+
+            var answer2 = LagrangePolynom.InterpolationPolynom(valueX, valueY, X, valueX.Count);
+
+            List<ValueModel> myModel = new List<ValueModel> { };
+
+            myModel.Add(new ValueModel { ExternalValue = new List<MainValueClass> { new MainValueClass { MainValue = answer2 } }, 
+                ValueName = "IntPolynom"});
+
+            DataValue = myModel;
+        }
+        #endregion
+
+        #endregion
+
+        /* ------------------------------------------------------------------------- */
         public MainWindowModel()
         {
-            var perm = new List<DataPoint> { };
-            perm.Add(new DataPoint {});
-            DataXY = perm;
 
-            var perm2 = new List<ValueModel> { };
-            perm2.Add(new ValueModel { MainValue = 10, ValueName = "x"});
-            perm2.Add(new ValueModel { MainValue = 35, ValueName = "y" });
-            perm2.Add(new ValueModel { MainValue = 67, ValueName = "z" });
-            DataValue = perm2;
+            DataXY = new ObservableCollection<DataPoint> { };
+
+            LagrangeRun = new LambdaCommand(OnLagrangeRunExecuted, CanLagrangeRunExecute);
         }
     }
 }

@@ -8,10 +8,10 @@ namespace AquaCalculation.Models
 {
     internal class ValueModel
     {
-        #region MainValue : double - Значение числового значения
-        private double _MainValue;
+        #region MainValue : IEnumerable<double> - Значение для числа
+        private IEnumerable<MainValueClass> _ExternalValue;
 
-        public double MainValue { get => _MainValue; set => _MainValue = value; }
+        public IEnumerable<MainValueClass> ExternalValue { get => _ExternalValue; set => _ExternalValue = value; }
         #endregion
 
         #region ValueName : String - Название елемента
