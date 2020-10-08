@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AquaCalculation.Models.Lab1
 {
-    class LagrangeModel
+    internal class LagrangeModel
     {
+        public double X { get; set; }
     }
 }

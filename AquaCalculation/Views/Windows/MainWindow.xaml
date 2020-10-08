@@ -5,18 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AquaCalculation"
         xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:l="clr-namespace:AquaCalculation.Models.Lab1"
+        xmlns:vm="clr-namespace:AquaCalculation.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:MainWindowModel/>
+    </Window.DataContext>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
             </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
-            
+
         </StatusBar>
         <TabControl>
-            <TabItem Header="Лаб 1"></TabItem>
+            <TabItem Header="Лаб 1">
+                <TabControl>
+                    <TabItem Header="Лагранж">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="148*"></RowDefinition>
+                                <RowDefinition Height="197*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <DataGrid x:Name="_DataXYGrid" Grid.Row="0" Grid.Column="0" MaxColumnWidth="200" AutoGenerateColumns="False" ItemsSource="{Binding DataXY}" FontSize="16" FontWeight="Bold">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn IsReadOnly="False" Header="X" Binding="{Binding XValue}" Width="*"/>
+                                        <DataGridTextColumn IsReadOnly="False" Header="Y" Binding="{Binding YValue}" Width="*"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                                <Grid Grid.Row="0" Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <GroupBox Grid.Row="0" Grid.Column="0" Header="Значения">
+                                        <ListBox ItemsSource="{Binding DataValue}" 
+                                             DisplayMemberPath="ValueName"
+                                             SelectedItem="{Binding SelectedValue}"/>
+                                    </GroupBox>
+                                    <GroupBox Grid.Row="0" Grid.Column="1" Header="{Binding SelectedValue.ValueName, StringFormat='Значение {0}'}">
+
+                                    </GroupBox>
+                                </Grid>
+                            </Grid>
+                            
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Ейктін">
+
+                    </TabItem>
+                </TabControl>
+            </TabItem>
             <TabItem Header="Лаб 2"></TabItem>
             <TabItem Header="Лаб 3"></TabItem>
             <TabItem Header="Лаб 4"></TabItem>

@@ -71,8 +71,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\Lab1\DataPoint.cs" />
     <Compile Include="Models\Lab1\EitkenModel.cs" />
     <Compile Include="Models\Lab1\LagrangeModel.cs" />
+    <Compile Include="Models\ValueModel.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
