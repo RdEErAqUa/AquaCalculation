@@ -4,6 +4,7 @@ using AquaCalculation.Models;
 using AquaCalculation.Models.Lab1;
 using AquaCalculation.ViewModels.Base;
 using AquaCalculation.ViewModels.Lab1;
+using AquaCalculation.ViewModels.Lab2;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -18,12 +19,16 @@ namespace AquaCalculation.ViewModels
 
         public EitkinViewModel EitkenModel { get; }
 
+        public MainLab2ViewModel MainLab2Model { get; }
+
         /* ------------------------------------------------------------------------- */
         public MainWindowModel()
         {
             LagrangeModel = new LagrangeViewModel(this);
 
             EitkenModel = new EitkinViewModel(this);
+
+            MainLab2Model = new MainLab2ViewModel(this);
         }
     }
 }

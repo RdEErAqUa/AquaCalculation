@@ -8,7 +8,7 @@
         xmlns:l="clr-namespace:AquaCalculation.Models.Lab1"
         xmlns:vm="clr-namespace:AquaCalculation.ViewModels"
         xmlns:viewlab1="clr-namespace:AquaCalculation.Views.Lab1"
-        xmlns:viewmodellab1="clr-namespace:AquaCalculation.ViewModels.Lab1"
+        xmlns:viewlab2="clr-namespace:AquaCalculation.Views.Lab2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
@@ -33,7 +33,9 @@
                     </TabItem>
                 </TabControl>
             </TabItem>
-            <TabItem Header="Лаб 2"></TabItem>
+            <TabItem Header="Лаб 2">
+                <viewlab2:MainLab2View DataContext="{Binding MainLab2Model}"/>
+            </TabItem>
             <TabItem Header="Лаб 3"></TabItem>
             <TabItem Header="Лаб 4"></TabItem>
         </TabControl>
