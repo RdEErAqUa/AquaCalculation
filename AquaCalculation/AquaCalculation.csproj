@@ -95,6 +95,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Data\Lab2\FirstFormula.cs" />
+    <Compile Include="Models\Lab4\lab4Data.cs" />
     <Compile Include="Data\MathLabs\Determinant.cs" />
     <Compile Include="Data\MathLabs\LagrangePolynom.cs" />
     <Compile Include="Data\UsefulFormulas\Factorial.cs" />
