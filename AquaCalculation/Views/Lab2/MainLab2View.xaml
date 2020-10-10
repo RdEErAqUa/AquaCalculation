@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AquaCalculation.Views.Lab2"
              xmlns:vm="clr-namespace:AquaCalculation.ViewModels"
-             xmlns:vmlab1="clr-namespace:AquaCalculation.ViewModels.Lab2"
+             xmlns:vmlab2="clr-namespace:AquaCalculation.ViewModels.Lab2"
              xmlns:oxy="http://oxyplot.org/wpf"
-             d:DataContext="{d:DesignInstance vmlab1:MainLab2ViewModel}"
+             d:DataContext="{d:DesignInstance vmlab2:MainLab2ViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>

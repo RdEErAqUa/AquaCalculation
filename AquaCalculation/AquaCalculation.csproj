@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MathParser.org-mXparser, Version=4.4.2.0, Culture=neutral, PublicKeyToken=0fbab7add73ed6e2, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathParser.org-mXparser.4.4.2\lib\net472\MathParser.org-mXparser.dll</HintPath>
+    </Reference>
     <Reference Include="OxyPlot, Version=2.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
       <HintPath>..\packages\OxyPlot.Core.2.0.0\lib\net45\OxyPlot.dll</HintPath>
     </Reference>
@@ -75,6 +78,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Lab3\MainLab3View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -89,15 +96,19 @@
     <Compile Include="Data\UsefulFormulas\Factorial.cs" />
     <Compile Include="Infrastructure\Commands\Base\Command.cs" />
     <Compile Include="Infrastructure\Commands\LambdaCommand.cs" />
+    <Compile Include="Infrastructure\Lab3\ChebishevPolynom.cs" />
     <Compile Include="Models\Lab1\DataPoint.cs" />
     <Compile Include="Models\Lab1\EitkenModel.cs" />
     <Compile Include="Models\Lab1\LagrangeModel.cs" />
+    <Compile Include="Models\lab3\ABModel.cs" />
     <Compile Include="Models\MainValueClass.cs" />
     <Compile Include="Models\ValueModel.cs" />
+    <Compile Include="Models\XYValueModel.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\Lab1\EitkinViewModel.cs" />
     <Compile Include="ViewModels\Lab1\LagrangeViewModel.cs" />
     <Compile Include="ViewModels\Lab2\MainLab2ViewModel.cs" />
+    <Compile Include="ViewModels\Lab3\MainLab3ViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
     <Compile Include="Views\Lab1\EitkinView.xaml.cs">
       <DependentUpon>EitkinView.xaml</DependentUpon>
@@ -107,6 +118,9 @@
     </Compile>
     <Compile Include="Views\Lab2\MainLab2View.xaml.cs">
       <DependentUpon>MainLab2View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Lab3\MainLab3View.xaml.cs">
+      <DependentUpon>MainLab3View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

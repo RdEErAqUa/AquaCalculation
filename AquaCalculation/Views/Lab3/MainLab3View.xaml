@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="AquaCalculation.Views.Lab3.MainLab3View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AquaCalculation.Views.Lab3"
+             xmlns:vm="clr-namespace:AquaCalculation.ViewModels"
+             xmlns:vmlab3="clr-namespace:AquaCalculation.ViewModels.Lab3"
+             xmlns:oxy="http://oxyplot.org/wpf"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance vmlab3:MainLab3ViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="38*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="223*"/>
+                <ColumnDefinition Width="577*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32*"/>
+                    <RowDefinition Height="79*"/>
+                </Grid.RowDefinitions>
+                <DataGrid Grid.Row="0" Grid.Column="0" ItemsSource="{Binding ABvalue}" AutoGenerateColumns="False" CanUserAddRows="False"> 
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="a" Width="*" Binding="{Binding A}"/>
+                        <DataGridTextColumn Header="b" Width="*" Binding="{Binding B}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="n" Width="*" Binding="{Binding DataContext.NValue, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <DockPanel Grid.Column="0" Grid.Row="1">
+                    <Label DockPanel.Dock="Top" Content="n - значение(от 1-15)"/>
+                    <Slider DockPanel.Dock="Top" Maximum="15" Minimum="1" Value="{Binding NValue}"></Slider>
+                    <Button Content="Запустити програму" Command="{Binding ChebyshevPolynomFind}"></Button>
+                </DockPanel>
+            </Grid>
+            <TabControl Grid.Row="0" Grid.Column="1">
+                <TabItem Header="Данні">
+                    <DataGrid Grid.Row="0" Grid.Column="1" ItemsSource="{Binding XYValue}" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="x" Width="*" Binding="{Binding X}"/>
+                            <DataGridTextColumn Header="y" Width="*" Binding="{Binding Y}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Header="Точки перетину">
+                    <DataGrid Grid.Row="0" Grid.Column="1" ItemsSource="{Binding XYZero}" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="x" Width="*" Binding="{Binding X}"/>
+                            <DataGridTextColumn Header="y" Width="*" Binding="{Binding Y}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Header="Точки екстремуму">
+                    <DataGrid Grid.Row="0" Grid.Column="1" ItemsSource="{Binding XYValue}" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="x" Width="*" Binding="{Binding X}"/>
+                            <DataGridTextColumn Header="y" Width="*" Binding="{Binding Y}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+        <oxy:Plot Grid.Row="1" Grid.Column="0">
+            <oxy:Plot.Axes>
+                <oxy:LinearAxis Position="Left"/>
+                <oxy:LinearAxis Position="Bottom"/>
+            </oxy:Plot.Axes>
+            <oxy:LineSeries Color="Blue" ItemsSource="{Binding XYValue}"
+                                                DataFieldX="X"
+                                                DataFieldY="Y"/>
+        </oxy:Plot>
+    </Grid>
+</UserControl>
