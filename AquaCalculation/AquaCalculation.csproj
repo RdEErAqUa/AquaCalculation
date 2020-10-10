@@ -82,6 +82,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Lab4\MainLab4View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -109,6 +113,7 @@
     <Compile Include="ViewModels\Lab1\LagrangeViewModel.cs" />
     <Compile Include="ViewModels\Lab2\MainLab2ViewModel.cs" />
     <Compile Include="ViewModels\Lab3\MainLab3ViewModel.cs" />
+    <Compile Include="ViewModels\Lab4\MainLab4ViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
     <Compile Include="Views\Lab1\EitkinView.xaml.cs">
       <DependentUpon>EitkinView.xaml</DependentUpon>
@@ -121,6 +126,9 @@
     </Compile>
     <Compile Include="Views\Lab3\MainLab3View.xaml.cs">
       <DependentUpon>MainLab3View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Lab4\MainLab4View.xaml.cs">
+      <DependentUpon>MainLab4View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
