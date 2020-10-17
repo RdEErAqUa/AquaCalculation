@@ -56,7 +56,7 @@
                     </DataGrid>
                 </TabItem>
                 <TabItem Header="Точки екстремуму">
-                    <DataGrid Grid.Row="0" Grid.Column="1" ItemsSource="{Binding XYValue}" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <DataGrid Grid.Row="0" Grid.Column="1" ItemsSource="{Binding XYMaxMin}" AutoGenerateColumns="False" CanUserAddRows="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="x" Width="*" Binding="{Binding X}"/>
                             <DataGridTextColumn Header="y" Width="*" Binding="{Binding Y}"/>

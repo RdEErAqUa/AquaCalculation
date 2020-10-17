@@ -4,6 +4,7 @@ using AquaCalculation.Infrastructure.Lab3;
 using AquaCalculation.Models;
 using AquaCalculation.Models.Lab1;
 using AquaCalculation.Models.lab3;
+using AquaCalculation.Servises.RootsSeparation;
 using AquaCalculation.ViewModels.Base;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,18 +33,24 @@ namespace AquaCalculation.ViewModels.Lab3
         public int NValue { get => _NValue; set => Set(ref _NValue, value); }
         #endregion
 
-        #region XYValue : ICollaction<XYValueModel> - значение X и Y соответствено
+        #region XYValue : ICollection<XYValueModel> - значение X и Y соответствено
 
         private ICollection<XYValueModel> _XYValue;
 
         public ICollection<XYValueModel> XYValue { get => _XYValue; set => Set(ref _XYValue, value); }
         #endregion
 
-        #region XYZero : ICollaction<XYValueModel> - значение X и Y соответствено
+        #region XYZero : ICollection<XYValueModel> - значение X и Y соответствено
 
         private ICollection<XYValueModel> _XYZero;
 
         public ICollection<XYValueModel> XYZero { get => _XYZero; set => Set(ref _XYZero, value); }
+        #endregion
+
+        #region XYMaxMin : ICollection<XYValueModel> - точки экстремума
+        private ICollection<XYValueModel> _XYMaxMin;
+
+        public ICollection<XYValueModel> XYMaxMin { get => _XYMaxMin; set => Set(ref _XYMaxMin, value); }
         #endregion
 
         #endregion
@@ -77,7 +84,7 @@ namespace AquaCalculation.ViewModels.Lab3
 
             List<XYValueModel> XYValueLocal = new List<XYValueModel> { };
 
-            for(double i = AValue; i < BValue; i += 0.001)
+            for(double i = AValue; i < BValue; i += 0.0001)
             {
                 var temp1 = new XYValueModel { X = i, Y = ChebishevPolynom.ChebishevPolynomFind(i, NValue) };
 
@@ -85,6 +92,10 @@ namespace AquaCalculation.ViewModels.Lab3
             }
 
             XYValue = XYValueLocal;
+
+            AnalyticalSeparation analyticalSeparation = new AnalyticalSeparation();
+
+            XYMaxMin = analyticalSeparation.RootSeparation(XYValue);
         }
 
         #endregion

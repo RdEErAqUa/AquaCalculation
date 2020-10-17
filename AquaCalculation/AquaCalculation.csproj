@@ -95,6 +95,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Data\Lab2\FirstFormula.cs" />
+    <Compile Include="Data\Lab4\InterpolationSpline.cs" />
     <Compile Include="Models\Lab4\lab4Data.cs" />
     <Compile Include="Data\MathLabs\Determinant.cs" />
     <Compile Include="Data\MathLabs\LagrangePolynom.cs" />
@@ -109,6 +110,8 @@
     <Compile Include="Models\MainValueClass.cs" />
     <Compile Include="Models\ValueModel.cs" />
     <Compile Include="Models\XYValueModel.cs" />
+    <Compile Include="Servises\RootsSeparation\AnalyticalSeparation.cs" />
+    <Compile Include="Servises\RootsSeparation\Base\IRootSeparation.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\Lab1\EitkinViewModel.cs" />
     <Compile Include="ViewModels\Lab1\LagrangeViewModel.cs" />
@@ -163,8 +166,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Servises\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
