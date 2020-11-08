@@ -70,9 +70,10 @@
                 <oxy:LinearAxis Position="Left"/>
                 <oxy:LinearAxis Position="Bottom"/>
             </oxy:Plot.Axes>
-            <oxy:LineSeries Color="Blue" ItemsSource="{Binding XYValue}"
-                                                DataFieldX="X"
-                                                DataFieldY="Y"/>
+            <oxy:LineSeries Color="Blue"
+                               ItemsSource="{Binding XYValue}"
+                               DataFieldX="X"
+                               DataFieldY="Y"/>
         </oxy:Plot>
     </Grid>
 </UserControl>

@@ -8,6 +8,7 @@
              xmlns:vmlab4="clr-namespace:AquaCalculation.ViewModels.Lab4"
              xmlns:oxy="http://oxyplot.org/wpf"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance vmlab4:MainLab4ViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -24,10 +25,10 @@
                     <RowDefinition Height="89*"/>
                     <RowDefinition Height="22*"/>
                 </Grid.RowDefinitions>
-                <DataGrid Grid.Row="0" Grid.Column="0" ItemsSource="{Binding XYValue}" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid x:Name="_DataXYLab4" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding XYValue}" AutoGenerateColumns="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="X" Width="*" Binding="{Binding X}"/>
-                        <DataGridTextColumn Header="Y" Width="*" Binding="{Binding Y}"/>
+                        <DataGridTextColumn IsReadOnly="False" Header="X" Width="*" Binding="{Binding X}"/>
+                        <DataGridTextColumn IsReadOnly="False" Header="Y" Width="*" Binding="{Binding Y}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <DockPanel Grid.Column="0" Grid.Row="1">

@@ -86,7 +86,7 @@ namespace AquaCalculation.ViewModels.Lab3
 
             for(double i = AValue; i < BValue; i += 0.0001)
             {
-                var temp1 = new XYValueModel { X = i, Y = ChebishevPolynom.ChebishevPolynomFind(i, NValue) };
+                var temp1 = new XYValueModel { X = i, Y = ChebishevPolynom.ChebishevPolynomFind(i, NValue, AValue, BValue) };
 
                 XYValueLocal.Add(temp1);
             }

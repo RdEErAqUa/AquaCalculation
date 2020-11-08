@@ -40,7 +40,14 @@
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Button x:Name="_ButtonClickStartProccesingLagrange" Grid.Row="0" Grid.Column="0" Content="Почати розрахунок" Command="{Binding FirstPolynomRun}"></Button>
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button DockPanel.Dock="Left" Grid.Column="0" Content="1" Command="{Binding FirstPolynomRun}"></Button>
+                        <Button DockPanel.Dock="Right" Grid.Column="1" Content="2" Command="{Binding SecondPolynomRun}"></Button>
+                    </Grid>
                     <Button x:Name="_TextBoxLagrange1" Grid.Row="1" Grid.Column="0" Content="X"/>
                     <TextBox x:Name="_TextBoxLagrange2" Grid.Row="2" Grid.Column="0" Text="{Binding X}"/>
                 </Grid>
@@ -70,8 +77,16 @@
                 <oxy:LinearAxis Position="Left"/>
                 <oxy:LinearAxis Position="Bottom"/>
             </oxy:Plot.Axes>
-            <oxy:LineSeries Color="Blue"
+            <oxy:ScatterSeries Color="Blue" DataFieldSize="20"
                                                 ItemsSource="{Binding DataXY}"
+                                                DataFieldX="XValue"
+                                                DataFieldY="YValue"/>
+            <oxy:ScatterSeries Color="Yellow" DataFieldSize="1"
+                                                ItemsSource="{Binding DataXYAnswer}"
+                                                DataFieldX="XValue"
+                                                DataFieldY="YValue"/>
+            <oxy:ScatterSeries Color="Green" DataFieldSize="1"
+                                                ItemsSource="{Binding DataXYAnswer2}"
                                                 DataFieldX="XValue"
                                                 DataFieldY="YValue"/>
         </oxy:Plot>

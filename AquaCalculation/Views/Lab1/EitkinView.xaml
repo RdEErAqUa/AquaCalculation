@@ -41,7 +41,9 @@
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Button x:Name="_ButtonClickStartProccesingEitkin" Grid.Row="0" Grid.Column="0" Content="Почати розрахунок" Command="{Binding EitkinRun}"></Button>
-                    <Button x:Name="_TextBoxEitkin1" Grid.Row="1" Grid.Column="0" Content="X"/>
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <Button x:Name="_TextBoxEitkin1" Grid.Row="1" Content="X"/>
+                    </Grid>
                     <TextBox x:Name="_TextBoxEitkin2" Grid.Row="2" Grid.Column="0" Text="{Binding X}"/>
                 </Grid>
             </Grid>
@@ -71,8 +73,12 @@
                 <oxy:LinearAxis Position="Left"/>
                 <oxy:LinearAxis Position="Bottom"/>
             </oxy:Plot.Axes>
-            <oxy:LineSeries Color="Blue"
+            <oxy:ScatterSeries Color="Blue"
                                                 ItemsSource="{Binding DataXY}"
+                                                DataFieldX="XValue"
+                                                DataFieldY="YValue"/>
+            <oxy:ScatterSeries Color="Yellow"
+                                                ItemsSource="{Binding DataXYAnswer}"
                                                 DataFieldX="XValue"
                                                 DataFieldY="YValue"/>
         </oxy:Plot>

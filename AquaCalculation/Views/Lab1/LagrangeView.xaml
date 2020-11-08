@@ -36,12 +36,27 @@
                 </DataGrid>
                 <Grid Grid.Row="0" Grid.Column="1">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="0.4*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="0.2*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Button x:Name="_ButtonClickStartProccesingLagrange" Grid.Row="0" Grid.Column="0" Content="Почати розрахунок" Command="{Binding LagrangeRun}"></Button>
-                    <Button x:Name="_TextBoxLagrange1" Grid.Row="1" Grid.Column="0" Content="X"/>
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="0.5*"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="_TextBoxLagrange1" Grid.Row="1" Content="X"/>
+
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.7*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0" Content="Производная"/>
+                            <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding FormulaValue}"/>
+                        </Grid>
+                    </Grid>
                     <TextBox x:Name="_TextBoxLagrange2" Grid.Row="2" Grid.Column="0" Text="{Binding X}"/>
                 </Grid>
             </Grid>
@@ -70,8 +85,12 @@
                 <oxy:LinearAxis Position="Left"/>
                 <oxy:LinearAxis Position="Bottom"/>
             </oxy:Plot.Axes>
-            <oxy:LineSeries Color="Blue"
+            <oxy:ScatterSeries Color="Blue"
                                                 ItemsSource="{Binding DataXY}"
+                                                DataFieldX="XValue"
+                                                DataFieldY="YValue"/>
+            <oxy:ScatterSeries Color="Yellow"
+                                                ItemsSource="{Binding DataXYAnswer}"
                                                 DataFieldX="XValue"
                                                 DataFieldY="YValue"/>
         </oxy:Plot>

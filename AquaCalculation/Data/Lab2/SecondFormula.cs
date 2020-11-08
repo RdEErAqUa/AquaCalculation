@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AquaCalculation.Data.Lab2
 {
-    static class FirstFormula
+    class SecondFormula
     {
         static public List<List<double>> FindDelY(List<double> y, int power)
         {
@@ -33,7 +33,7 @@ namespace AquaCalculation.Data.Lab2
 
         }
 
-        static public double FirstInterpolation(List<double> x, List<double> y, double X, int power)
+        static public double SecondInterpolation(List<double> x, List<double> y, double X, int power)
         {
             double h = 0;
             if (x.Count > 1)
@@ -43,42 +43,30 @@ namespace AquaCalculation.Data.Lab2
 
             int tempt = 0;
 
-            foreach(var el in x)
+            foreach (var el in x)
             {
                 if (el <= X) tempt++;
                 else break;
             }
 
-            if (tempt > 0) tempt--;
-
-
+            if (!(x.Count < tempt) && tempt - 1 >= 0) tempt--;
             double t = (X - x[tempt]) / h;
 
             List<List<double>> delY = FindDelY(y, power);
 
+
+            int n = delY.Count;
+
             double P = y[tempt];
-
-            int posX = 0;
-
-            for (int i = 0; i < x.Count; i++)
-            {
-                if (x[i] < X)
-                    continue;
-                else
-                    posX = i - 1;
-
-                break;
-            }
-
 
             for (int i = 0; i < power; i++)
             {
                 double ourTempT = t;
                 for (int k = 0; k < i; k++)
                 {
-                    t *= (t - k);
+                    t *= (t + k);
                 }
-                P += ((t * delY[i][1]) / Factorial.FindFactorial(i + 1));
+                P += ((t * delY[i][n - 1]) / Factorial.FindFactorial(i + 1));
             }
 
             return P;

@@ -8,7 +8,7 @@ namespace AquaCalculation.Infrastructure.Lab3
 {
     static class ChebishevPolynom
     {
-        static public double ChebishevPolynomFind(double x, int nNeedPose)
+        static public double ChebishevPolynomFind(double x, int nNeedPose, double AValue, double BValue)
         {
             switch (nNeedPose)
             {
@@ -17,15 +17,15 @@ namespace AquaCalculation.Infrastructure.Lab3
                 case 1:
                     return x;
                 default:
-                    return ChebishevPolynomItteration(1, x, 1, nNeedPose, x);
+                    return ChebishevPolynomItteration(1, (2 * x - AValue - BValue) / (BValue - AValue), 1, nNeedPose, (2 * x - AValue - BValue) / (BValue - AValue));
             }
         }
 
-        static private double ChebishevPolynomItteration(double Tn, double Tn1, int CurrentState, int nNeedPose, double x)
+        static private double ChebishevPolynomItteration(double Tn, double Tn1, int CurrentState, int nNeedPose, double t)
         {
-            Tn1 = 2 * x * Tn - Tn1;
+            Tn1 = 2 * t * Tn - Tn1;
 
-            if (++CurrentState <= nNeedPose) return ChebishevPolynomItteration(Tn1, Tn, CurrentState, nNeedPose, x);
+            if (++CurrentState <= nNeedPose) return ChebishevPolynomItteration(Tn1, Tn, CurrentState, nNeedPose, t);
             else return Tn1;
         }
 
@@ -35,8 +35,9 @@ namespace AquaCalculation.Infrastructure.Lab3
 
             for(int i = 0; i < n; i++)
             {
-                double tempX = ((a + b) / 2) + ((b - a) / 2) * Math.Cos(((n - i + 1 + 0.5) / n) * Math.PI);
-
+                double tempX = 0.5 * (a + b) +  0.5 * (b - a) * Math.Cos((((2 * (double)i - 1) / (2 * n)) * Math.PI));
+                if (i == 0)
+                    tempX = -tempX;
                 x.Add(tempX);
             }
 

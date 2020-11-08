@@ -1,8 +1,11 @@
 ﻿using AquaCalculation.Data.MathLabs;
+using AquaCalculation.Data.UsefulFormulas;
 using AquaCalculation.Infrastructure.Commands;
 using AquaCalculation.Models;
 using AquaCalculation.Models.Lab1;
 using AquaCalculation.ViewModels.Base;
+using org.mariuszgromada.math.mxparser;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -43,6 +46,21 @@ namespace AquaCalculation.ViewModels.Lab1
         private double _X;
 
         public double X { get => _X; set => Set(ref _X, value); }
+
+        #endregion
+
+        #region DataXYAnswer : ICollection<DataPoint> - Набор данних заданих в таблице
+
+        private ICollection<DataPoint> _DataXYAnswer;
+
+        public ICollection<DataPoint> DataXYAnswer { get => _DataXYAnswer; set => Set(ref _DataXYAnswer, value); }
+
+        #endregion
+
+        #region FormulaValue : String - производная функции для подсеча ошибки
+        private string _FormulaValue;
+
+        public string FormulaValue { get => _FormulaValue; set => Set(ref _FormulaValue, value); }
 
         #endregion
 
