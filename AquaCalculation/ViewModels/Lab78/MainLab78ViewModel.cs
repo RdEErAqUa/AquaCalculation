@@ -108,12 +108,15 @@ namespace AquaCalculation.ViewModels.Lab78
                 mistakeSecond += Math.Pow((yData[i] - SecondFunctionValue.ElementAt(i).Y), 2);
             }
             //
+            List<double> xDataZ = new List<double> { };
             List<double> yDataZ = new List<double> { };
 
-            foreach(var el in yData)
+            foreach(var el in xDataZ)
+                xDataZ.Add(Math.Log(el));
+            foreach (var el in yData)
                 yDataZ.Add(Math.Log(el));
 
-            List<double> AB2 = LeastSquares.LinearAproximation(xData, yDataZ);
+            List<double> AB2 = LeastSquares.LinearAproximation(xDataZ, yDataZ);
 
             double az = Math.Exp(AB2[0]);
 
