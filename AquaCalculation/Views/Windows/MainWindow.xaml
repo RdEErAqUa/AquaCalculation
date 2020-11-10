@@ -11,6 +11,9 @@
         xmlns:viewlab2="clr-namespace:AquaCalculation.Views.Lab2"
         xmlns:viewlab3="clr-namespace:AquaCalculation.Views.Lab3"
         xmlns:viewlab4="clr-namespace:AquaCalculation.Views.Lab4"
+        xmlns:viewlab5="clr-namespace:AquaCalculation.Views.Lab5"
+        xmlns:viewlab6="clr-namespace:AquaCalculation.Views.Lab6"
+        xmlns:viewlab78="clr-namespace:AquaCalculation.Views.Lab78"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
@@ -43,6 +46,15 @@
             </TabItem>
             <TabItem Header="Лаб 4">
                 <viewlab4:MainLab4View DataContext="{Binding MainLab4Model}"/>
+            </TabItem>
+            <TabItem Header="Лаб 5">
+                <viewlab5:MainLab5View DataContext="{Binding MainLab5Model}"/>
+            </TabItem>
+            <TabItem Header="Лаб 6">
+                <viewlab6:MainLab6View DataContext="{Binding MainLab6Model}"/>
+            </TabItem>
+            <TabItem Header="Лаб 7-8">
+                <viewlab78:MainLab78View DataContext="{Binding MainLab78Model}"/>
             </TabItem>
         </TabControl>
     </DockPanel>

@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="AquaCalculation.Views.Lab78.MainLab78View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AquaCalculation.Views.Lab78"
+             xmlns:vmlab78="clr-namespace:AquaCalculation.ViewModels.Lab78"
+             xmlns:oxy="http://oxyplot.org/wpf"
+             d:DataContext="{d:DesignInstance vmlab78:MainLab78ViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="148*"></RowDefinition>
+            <RowDefinition Height="197*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="0.4*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <DataGrid Grid.Row="0" Grid.Column="0" MaxColumnWidth="200" AutoGenerateColumns="False" ItemsSource="{Binding DataValue}" FontSize="16" FontWeight="Bold">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn IsReadOnly="False" Header="X" Binding="{Binding X}" Width="*"/>
+                        <DataGridTextColumn IsReadOnly="False" Header="Y" Binding="{Binding Y}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="_ButtonClickStartProccesingLagrange" Grid.Row="0" Grid.Column="0" Content="Почати розрахунок" Command="{Binding FunctionStartCalculation}"></Button>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Row="0" Grid.Column="0" Header="Значения">
+                    <ListBox ItemsSource="{Binding MistakeValue}" 
+                                             DisplayMemberPath="ValueName"
+                                             SelectedItem="{Binding SelectedValue}"/>
+                </GroupBox>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="2">
+                <GroupBox Grid.Row="0" Grid.Column="1" Header="{Binding SelectedValue.ValueName, StringFormat='Значение {0}'}">
+                    <DataGrid x:Name="_ValueGridLagrange" ItemsSource="{Binding SelectedValue.ExternalValue}">
+                        <DataGrid.Columns>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+        </Grid>
+        <TabControl Grid.Row="1" Grid.Column="0">
+            <TabItem Header="ax+b" >
+
+                <oxy:Plot Grid.Row="1" Grid.Column="0">
+                    <oxy:Plot.Axes>
+                        <oxy:LinearAxis Position="Left"/>
+                        <oxy:LinearAxis Position="Bottom"/>
+                    </oxy:Plot.Axes>
+                    <oxy:LineSeries Color="Orange"
+                               ItemsSource="{Binding DataValue}"
+                               DataFieldX="X"
+                               DataFieldY="Y"/>
+                    <oxy:LineSeries Color="Red"
+                               ItemsSource="{Binding FirstFunctionValue}"
+                               DataFieldX="X"
+                               DataFieldY="Y"/>
+                </oxy:Plot>
+            </TabItem>
+            <TabItem Header="ax^2+bx+c" >
+                <oxy:Plot Grid.Row="1" Grid.Column="0">
+                    <oxy:Plot.Axes>
+                        <oxy:LinearAxis Position="Left"/>
+                        <oxy:LinearAxis Position="Bottom"/>
+                    </oxy:Plot.Axes>
+                    <oxy:LineSeries Color="Orange"
+                               ItemsSource="{Binding DataValue}"
+                               DataFieldX="X"
+                               DataFieldY="Y"/>
+                    <oxy:LineSeries Color="Red"
+                               ItemsSource="{Binding SecondFunctionValue}"
+                               DataFieldX="X"
+                               DataFieldY="Y"/>
+                </oxy:Plot>
+            </TabItem>
+            <TabItem Header="ab^x" >
+                <oxy:Plot Grid.Row="1" Grid.Column="0">
+                    <oxy:Plot.Axes>
+                        <oxy:LinearAxis Position="Left"/>
+                        <oxy:LinearAxis Position="Bottom"/>
+                    </oxy:Plot.Axes>
+                    <oxy:LineSeries Color="Orange"
+                               ItemsSource="{Binding DataValue}"
+                               DataFieldX="X"
+                               DataFieldY="Y"/>
+                    <oxy:LineSeries Color="Red"
+                               ItemsSource="{Binding ThirdFunctionValue}"
+                               DataFieldX="X"
+                               DataFieldY="Y"/>
+                </oxy:Plot>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

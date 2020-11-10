@@ -92,6 +92,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Lab5\MainLab5View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Lab6\MainLab6View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Lab78\MainLab78View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,6 +115,10 @@
     <Compile Include="Data\Lab2\FirstFormula.cs" />
     <Compile Include="Data\Lab2\SecondFormula.cs" />
     <Compile Include="Data\Lab4\InterpolationSpline.cs" />
+    <Compile Include="Data\Lab5\BSpline.cs" />
+    <Compile Include="Data\Lab78\LeastSquares.cs" />
+    <Compile Include="Data\SLAE\BasicTransformation.cs" />
+    <Compile Include="Data\SLAE\GaussienElimination.cs" />
     <Compile Include="Models\Lab4\lab4Data.cs" />
     <Compile Include="Data\MathLabs\Determinant.cs" />
     <Compile Include="Data\MathLabs\LagrangePolynom.cs" />
@@ -114,6 +130,7 @@
     <Compile Include="Models\Lab1\EitkenModel.cs" />
     <Compile Include="Models\Lab1\LagrangeModel.cs" />
     <Compile Include="Models\lab3\ABModel.cs" />
+    <Compile Include="Models\Lab5\XYModel.cs" />
     <Compile Include="Models\MainValueClass.cs" />
     <Compile Include="Models\ValueModel.cs" />
     <Compile Include="Models\XYValueModel.cs" />
@@ -125,6 +142,9 @@
     <Compile Include="ViewModels\Lab2\MainLab2ViewModel.cs" />
     <Compile Include="ViewModels\Lab3\MainLab3ViewModel.cs" />
     <Compile Include="ViewModels\Lab4\MainLab4ViewModel.cs" />
+    <Compile Include="ViewModels\Lab5\MainLab5ViewModel.cs" />
+    <Compile Include="ViewModels\Lab6\MainLab6ViewModel.cs" />
+    <Compile Include="ViewModels\Lab78\MainLab78ViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
     <Compile Include="Views\Lab1\EitkinView.xaml.cs">
       <DependentUpon>EitkinView.xaml</DependentUpon>
@@ -140,6 +160,15 @@
     </Compile>
     <Compile Include="Views\Lab4\MainLab4View.xaml.cs">
       <DependentUpon>MainLab4View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Lab5\MainLab5View.xaml.cs">
+      <DependentUpon>MainLab5View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Lab6\MainLab6View.xaml.cs">
+      <DependentUpon>MainLab6View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Lab78\MainLab78View.xaml.cs">
+      <DependentUpon>MainLab78View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
