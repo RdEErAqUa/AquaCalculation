@@ -47,6 +47,8 @@ namespace AquaCalculation.ViewModels
 
             MainLab3Model = new MainLab3ViewModel(this);
 
+            MainLab4Model = new MainLab4ViewModel(this);
+
             MainLab5Model = new MainLab5ViewModel(this);
 
             MainLab6Model = new MainLab6ViewModel(this);

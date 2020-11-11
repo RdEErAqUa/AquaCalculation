@@ -61,8 +61,14 @@
                 <oxy:LinearAxis Position="Left"/>
                 <oxy:LinearAxis Position="Bottom"/>
             </oxy:Plot.Axes>
-            <oxy:LineSeries Color="Blue"/>
-            <oxy:LineSeries Color="RED"/>
+            <oxy:LineSeries Color="Orange"
+                               ItemsSource="{Binding XYValue}"
+                               DataFieldX="X"
+                               DataFieldY="Y"/>
+            <oxy:LineSeries Color="Red"
+                               ItemsSource="{Binding XYValueSpline}"
+                               DataFieldX="X"
+                               DataFieldY="Y"/>
         </oxy:Plot>
     </Grid>
 </UserControl>

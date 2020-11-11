@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using AquaCalculation.Data.Lab4;
 
 namespace AquaCalculation.ViewModels.Lab4
 {
@@ -58,44 +59,16 @@ namespace AquaCalculation.ViewModels.Lab4
                 valueX.Add(el.X);
                 valueY.Add(el.Y);
             }
-            //
-            List<double> valueH = new List<double> { };
-            for(int i = 0; i < valueX.Count - 1; i++)
+            CubicSpline SplineFind = new CubicSpline();
+
+            SplineFind.BuildSpline(valueX, valueY, valueY.Count - 1);
+
+            for(double i = valueX.Min(); i < valueX.Max(); i += 0.001)
             {
-                valueH.Add(valueX[i + 1] - valueX[i]);
+                XYValueSpline.Add(new XYValueModel { X = i, Y = SplineFind.Interpolate(i)});
             }
 
-            List<double> valueDelta = new List<double> { };
-
-            for(int i = 1; i < valueX.Count; i++)
-            {
-                valueDelta.Add((valueY[i] - valueY[i-1]) / valueH[i - 1]);
-            }
-
-            List<double> valueA = new List<double> { };
-            List<double> valueB = new List<double> { };
-
-            valueA.Add(2 * (valueH[0] + valueH[1]));
-            valueB.Add(6 * (valueDelta[1] - valueDelta[0]));
-
-            for(int i = 1; i < valueX.Count - 1; i++)
-            {
-                valueA.Add(2 * (valueH[i - 1] + valueH[i]) - (Math.Pow(valueH[i - 1], 2.0) / valueA[i - 1]));
-                valueB.Add(6 * (valueDelta[i] - valueDelta[i - 1]) - ((valueH[i - 1] * valueB[i-1]) / valueA[i - 1]));
-            }
-
-            List<double> valueU = new List<double> { };
-
-            valueU.Add(0);
-
-            for(int i = 0; i < valueA.Count - 1; i++)
-            {
-                valueU.Add((valueB[valueB.Count - i - 1] - valueH[valueB.Count - i - 1] * valueU[i]) / valueA[valueB.Count - i - 1]);
-            }
-
-            valueU.Add(0);
-
-            int x = 0;
+            
         }
 
         #endregion
@@ -104,6 +77,8 @@ namespace AquaCalculation.ViewModels.Lab4
             this.MainModel = MainModel;
 
             XYValue = new ObservableCollection<XYValueModel> { };
+
+            XYValueSpline = new ObservableCollection<XYValueModel> { };
 
             DoSplineInterpolation = new LambdaCommand(OnDoSplineInterpolationExecuted, CanDoSplineInterpolationExecute);
         }
