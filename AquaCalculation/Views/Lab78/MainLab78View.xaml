@@ -69,7 +69,7 @@
                         <oxy:LinearAxis Position="Left"/>
                         <oxy:LinearAxis Position="Bottom"/>
                     </oxy:Plot.Axes>
-                    <oxy:LineSeries Color="Orange"
+                    <oxy:ScatterSeries Color="Orange"
                                ItemsSource="{Binding DataValue}"
                                DataFieldX="X"
                                DataFieldY="Y"/>
@@ -85,7 +85,7 @@
                         <oxy:LinearAxis Position="Left"/>
                         <oxy:LinearAxis Position="Bottom"/>
                     </oxy:Plot.Axes>
-                    <oxy:LineSeries Color="Orange"
+                    <oxy:ScatterSeries Color="Orange"
                                ItemsSource="{Binding DataValue}"
                                DataFieldX="X"
                                DataFieldY="Y"/>
@@ -101,7 +101,7 @@
                         <oxy:LinearAxis Position="Left"/>
                         <oxy:LinearAxis Position="Bottom"/>
                     </oxy:Plot.Axes>
-                    <oxy:LineSeries Color="Orange"
+                    <oxy:ScatterSeries Color="Orange"
                                ItemsSource="{Binding DataValue}"
                                DataFieldX="X"
                                DataFieldY="Y"/>
